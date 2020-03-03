@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-pinterest" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-plugin-pinterest</name>
+    <js-module name="Pinterest" src="www/Pinterest.js">
+        <clobbers target="cordova.plugins.Pinterest" />
+    </js-module>
+    <preference name="APP_ID" default="" />
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Pinterest">
+                <param name="android-package" value="com.zyramedia.cordova.pinterest.Pinterest" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="pdk$APP_ID" />
+            </intent-filter>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="com.zyramedia.cordova.pinterest.APP_ID" android:value="\ $APP_ID" />
+        </config-file>
+
+        <source-file src="src/android/Pinterest.java" target-dir="src/com/zyramedia/cordova/pinterest" />
+
+        <resource-file src="src/android/pdk.jar" target="libs/pdk.jar" />
+
+        <framework src="src/android/Pinterest.gradle" custom="true" type="gradleReference" />
+
+    </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Pinterest">
+                <param name="ios-package" value="Pinterest" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLName</key>
+                    <string></string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>pdk$APP_ID</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="PinterestAppId">
+            <string>$APP_ID</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSExceptionDomains</key>
+                <dict>
+                    <key>pinit</key>
+                    <dict>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
+                        <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                        <false/>
+                    </dict>
+                </dict>
+            </dict>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>pinterestsdk.v1</string>
+            </array>
+        </config-file>
+
+        <header-file src="src/ios/Pinterest.h" />
+        <source-file src="src/ios/Pinterest.m" />
+        <framework src="PinterestSDK" type="podspec" spec="~> 1.0.2" />
+    </platform>
+
+</plugin>

@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-pinterest",
+  "version": "1.1.1",
+  "description": "Cordova plugin for Pinterest",
+  "cordova": {
+    "id": "cordova-plugin-pinterest",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyramedia/cordova-plugin-pinterest.git"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "pinterest",
+    "cordova-plugin"
+  ],
+  "author": "Khoa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zyramedia/cordova-plugin-pinterest/issues"
+  },
+  "homepage": "https://github.com/zyramedia/cordova-plugin-pinterest#readme"
+}
